@@ -45,16 +45,16 @@ def load_models():
     model_dir = "roberta_local"
     #model_file = "model.safetensors"
     os.makedirs(model_dir, exist_ok=True) 
-    model_path = os.path.join(model_dir, "model.safetensors")  # ✅ Path construction
+    #model_path = os.path.join(model_dir, "model.safetensors")  # ✅ Path construction
 #
     try:
         #model_path = "C://Users//sanja//OneDrive//Documents//projR//roberta_local"
-        if not os.path.exists(model_path):
-            os.makedirs(os.path.dirname(model_path), exist_ok=True)
+        if not os.path.exists(model_dir):
+            os.makedirs(os.path.dirname(model_dir), exist_ok=True)
             with st.spinner("Downloading model weights from Google Drive..."):
-             gdown.download(gdrive_url, model_path, quiet=False)
-        tokenizer = RobertaTokenizer.from_pretrained(model_path)
-        model = RobertaForSequenceClassification.from_pretrained(model_path)
+             gdown.download(gdrive_url, model_dir, quiet=False)
+        tokenizer = RobertaTokenizer.from_pretrained(model_dir)
+        model = RobertaForSequenceClassification.from_pretrained(model_dir)
 
         gemini_model = genai.GenerativeModel("models/gemini-2.0-flash")
 

@@ -11,7 +11,10 @@ import time
 import nltk
 import requests
 import toml
+import gdown
 from nltk.corpus import stopwords
+
+gdrive_url = "https://drive.google.com/uc?id=1BJnLdEn_jzezBcR6s4WmbnN-qRmxXagy"
 
 # Page configuration
 st.set_page_config(
@@ -19,10 +22,6 @@ st.set_page_config(
     page_icon="⚡",
     layout="wide"
 )
-
-# CX = "04ad881c61b5f4ae0"
-# API_KEY = "AIzaSyA4czfZ7wYpJRazh8Q5jZgkZfAp0Sj9AyQ"
-# GEMINI_API_KEY = "AIzaSyDUifpjjNWmeZZxwA1Oq9Wu-2DZQ8nj43w"
 
 # Accessing Google and Gemini API credentials from Streamlit's secrets manager
 google_api_key = st.secrets["GOOGLE"]["API_KEY"]
@@ -42,6 +41,9 @@ def load_models():
 
     try:
         model_path = "C://Users//sanja//OneDrive//Documents//projR//roberta_local"
+        if not os.path.exists(model_path):
+            os.makedirs(os.path.dirname(model_path), exist_ok=True)
+            gdown.download(gdrive_url, model_path, quiet=False)
         tokenizer = RobertaTokenizer.from_pretrained(model_path)
         model = RobertaForSequenceClassification.from_pretrained(model_path)
 

@@ -43,8 +43,8 @@ def load_models():
     genai.configure(api_key=gemini_api_key)  # Set the Gemini API key
     #
     model_dir = "roberta_local"
-    model_file = "model.safetensors"
-    model_path = os.path.join(model_dir, model_file)
+    #model_file = "model.safetensors"
+    model_path = os.path.join(model_dir,  exist_ok=True)
 #
     try:
         #model_path = "C://Users//sanja//OneDrive//Documents//projR//roberta_local"

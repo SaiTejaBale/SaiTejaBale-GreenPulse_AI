@@ -49,7 +49,8 @@ def load_models():
 #
     try:
         #model_path = "C://Users//sanja//OneDrive//Documents//projR//roberta_local"
-        if not os.path.exists(model_dir):
+        if not os.path.exists(model_dir) or not os.listdir(model_dir):
+            gdown.download_folder(gdrive_url, output=model_dir, quiet=False, use_cookies=False)
             os.makedirs(os.path.dirname(model_dir), exist_ok=True)
             with st.spinner("Downloading model weights from Google Drive..."):
              gdown.download(gdrive_url, model_dir, quiet=False)

@@ -14,8 +14,6 @@ import toml
 import gdown
 from nltk.corpus import stopwords
 
-gdrive_url = "https://drive.google.com/drive/u/1/folders/1aeTtA567VaDPSqM5nC8vdgkTHc999vvZ"
-
 # Page configuration
 st.set_page_config(
     page_title="Energy Policy Sentiment Analysis",
@@ -33,17 +31,26 @@ gemini_api_key = st.secrets["GEMINI"]["GEMINI_API_KEY"]
 # st.write("Google CX:", google_cx)
 # st.write("Gemini API Key:", gemini_api_key)
 
+# --- Google Drive model file ID (replace with your actual file ID) ---
+gdrive_file_id = "1aeTtA567VaDPSqM5nC8vdgkTHc999vvZ"  # <-- Replace with your actual file ID
+gdrive_url = f"https://drive.google.com/uc?id={gdrive_file_id}"
+
 # Add caching for performance improvement
 @st.cache_resource
 def load_models():
     """Load and cache local RoBERTa model and Gemini for insights"""
     genai.configure(api_key=gemini_api_key)  # Set the Gemini API key
-
+    #
+    model_dir = "roberta_local"
+    model_file = "model.safetensors"
+    model_path = os.path.join(model_dir, model_file)
+#
     try:
-        model_path = "C://Users//sanja//OneDrive//Documents//projR//roberta_local"
+        #model_path = "C://Users//sanja//OneDrive//Documents//projR//roberta_local"
         if not os.path.exists(model_path):
             os.makedirs(os.path.dirname(model_path), exist_ok=True)
-            gdown.download(gdrive_url, model_path, quiet=False)
+            with st.spinner("Downloading model weights from Google Drive..."):
+             gdown.download(gdrive_url, model_path, quiet=False)
         tokenizer = RobertaTokenizer.from_pretrained(model_path)
         model = RobertaForSequenceClassification.from_pretrained(model_path)
 

@@ -1,0 +1,6 @@
+roberta_local/
+*.safetensors
+streamlit-env/
+venv/
+*.dylib
+*.so

@@ -8,4 +8,5 @@ emoji==2.14.1
 torch==2.3.0
 transformers==4.40.2
 nltk==3.8.1
-tornado==6.4 
+tornado==6.4
+gdown

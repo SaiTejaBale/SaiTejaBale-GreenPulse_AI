@@ -4,3 +4,4 @@ plotly
 langchain
 openai
 google-generativeai
+emoji

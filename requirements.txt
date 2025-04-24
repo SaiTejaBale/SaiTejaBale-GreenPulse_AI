@@ -4,5 +4,7 @@ plotly
 langchain
 openai
 google-generativeai
-emoji
-torch
+emoji==2.14.1
+torch==2.3.0
+transformers==4.40.2
+tornado==6.4

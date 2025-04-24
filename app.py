@@ -14,7 +14,7 @@ import toml
 import gdown
 from nltk.corpus import stopwords
 
-gdrive_url = "https://drive.google.com/uc?id=1aeTtA567VaDPSqM5nC8vdgkTHc999vvZ"
+gdrive_url = "https://drive.google.com/drive/u/1/folders/1aeTtA567VaDPSqM5nC8vdgkTHc999vvZ"
 
 # Page configuration
 st.set_page_config(

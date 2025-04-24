@@ -32,8 +32,9 @@ gemini_api_key = st.secrets["GEMINI"]["GEMINI_API_KEY"]
 # st.write("Gemini API Key:", gemini_api_key)
 
 # --- Google Drive model file ID (replace with your actual file ID) ---
-gdrive_file_id = "1aeTtA567VaDPSqM5nC8vdgkTHc999vvZ"  # <-- Replace with your actual file ID
-gdrive_url = f"https://drive.google.com/uc?id={gdrive_file_id}"
+#gdrive_file_id = "1aeTtA567VaDPSqM5nC8vdgkTHc999vvZ"  # <-- Replace with your actual file ID
+gdrive_url = "https://drive.google.com/drive/u/1/folders/1aeTtA567VaDPSqM5nC8vdgkTHc999vvZ"
+
 
 # Add caching for performance improvement
 @st.cache_resource

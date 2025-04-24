@@ -5,4 +5,4 @@ langchain
 openai
 google-generativeai
 emoji
-troch
+torch

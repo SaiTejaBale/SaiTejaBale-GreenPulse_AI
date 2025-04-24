@@ -44,7 +44,8 @@ def load_models():
     #
     model_dir = "roberta_local"
     #model_file = "model.safetensors"
-    model_path = os.path.join(model_dir,  exist_ok=True)
+    os.makedirs(model_dir, exist_ok=True) 
+    model_path = os.path.join(model_dir, "model.safetensors")  # ✅ Path construction
 #
     try:
         #model_path = "C://Users//sanja//OneDrive//Documents//projR//roberta_local"
